@@ -41,7 +41,7 @@ public class Excel {
         Sheet sheet = book.createSheet("Productos");
  
         try {
-            InputStream is = new FileInputStream("src/img/logo.png");
+            InputStream is = new FileInputStream("src/Images/report.png");
             byte[] bytes = IOUtils.toByteArray(is);
             int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
             is.close();
@@ -109,7 +109,7 @@ public class Excel {
             datosEstilo.setBorderRight(BorderStyle.THIN);
             datosEstilo.setBorderBottom(BorderStyle.THIN);
  
-            ps = conn.prepareStatement("SELECT codigo, nombre, precio, stock FROM productos");
+            ps = conn.prepareStatement("SELECT codigo, descripcion, precio, stock FROM productos");
             rs = ps.executeQuery();
  
             int numCol = rs.getMetaData().getColumnCount();

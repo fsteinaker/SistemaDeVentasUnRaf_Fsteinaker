@@ -1016,6 +1016,11 @@ public class Sistemas extends javax.swing.JFrame {
         btnExcelProducto.setBackground(new java.awt.Color(204, 204, 204));
         btnExcelProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/excel.png"))); // NOI18N
         btnExcelProducto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExcelProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelProductoActionPerformed(evt);
+            }
+        });
 
         txtIDProducto.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -1599,6 +1604,10 @@ public class Sistemas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hay campos que están vacíos. Debe llenarlos todos.");  
             }
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void btnExcelProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelProductoActionPerformed
+        Excel.reporte();
+    }//GEN-LAST:event_btnExcelProductoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
