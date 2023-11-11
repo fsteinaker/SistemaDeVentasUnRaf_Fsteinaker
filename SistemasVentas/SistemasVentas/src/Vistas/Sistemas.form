@@ -270,6 +270,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
@@ -1967,7 +1968,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtCUITConfiguracion" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="txtCUILConfiguracion" min="-2" pref="182" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
@@ -2016,7 +2017,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtCUITConfiguracion" pref="33" max="32767" attributes="0"/>
+                                  <Component id="txtCUILConfiguracion" pref="33" max="32767" attributes="0"/>
                                   <Component id="txtNombreConfiguracion" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -2046,7 +2047,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CUIT"/>
+                <Property name="text" type="java.lang.String" value="CUIL"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
@@ -2099,14 +2100,14 @@
                 <Property name="text" type="java.lang.String" value="Raz&#xf3;n Social"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCUITConfiguracion">
+            <Component class="javax.swing.JTextField" name="txtCUILConfiguracion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCUITConfiguracionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCUILConfiguracionActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreConfiguracion">

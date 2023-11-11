@@ -6,12 +6,12 @@ public class Productos {
     private String descripcion;
     private String proveedor;
     private int stock;
-    private int precio;
+    private double precio;
 
 public Productos() {
 }
 
-    public Productos(int id, String codigo, String descripcion, String proveedor, int stock, int precio) {
+    public Productos(int id, String codigo, String descripcion, String proveedor, int stock, double precio) {
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -60,11 +60,11 @@ public Productos() {
         this.stock = stock;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

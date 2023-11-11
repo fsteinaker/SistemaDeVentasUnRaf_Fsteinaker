@@ -97,6 +97,16 @@ public class Sistemas extends javax.swing.JFrame {
         }
         tableProducto.setModel(modelo);
     }
+    
+    // Listar configuracion
+    public void ListarConfig() {
+        cfg = (Config) cfgDAO.listarConfig();
+        txtCUILConfiguracion.setText("" + cfg.getCUIL());
+        txtNombreConfiguracion.setText("" + cfg.getNombre());
+        txtTelConfiguracion.setText("" + cfg.getTelefono());
+        txtDireccionConfiguracion.setText("" + cfg.getDireccion());
+        txtRazonConfiguracion.setText("" + cfg.getRazon());
+    }
    
     //Evitar que se dupliquen los registros al cliquear el comando
     public void limpiarTable(){
@@ -211,7 +221,7 @@ public class Sistemas extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        txtCUITConfiguracion = new javax.swing.JTextField();
+        txtCUILConfiguracion = new javax.swing.JTextField();
         txtNombreConfiguracion = new javax.swing.JTextField();
         txtTelConfiguracion = new javax.swing.JTextField();
         txtDireccionConfiguracion = new javax.swing.JTextField();
@@ -346,6 +356,7 @@ public class Sistemas extends javax.swing.JFrame {
 
         tabModulo.setBackground(new java.awt.Color(255, 255, 255));
         tabModulo.setForeground(new java.awt.Color(0, 0, 0));
+        tabModulo.setEnabled(false);
         tabModulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tabModulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1166,7 +1177,7 @@ public class Sistemas extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("CUIT");
+        jLabel27.setText("CUIL");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
@@ -1186,10 +1197,10 @@ public class Sistemas extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("Razón Social");
 
-        txtCUITConfiguracion.setBackground(new java.awt.Color(255, 255, 204));
-        txtCUITConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+        txtCUILConfiguracion.setBackground(new java.awt.Color(255, 255, 204));
+        txtCUILConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCUITConfiguracionActionPerformed(evt);
+                txtCUILConfiguracionActionPerformed(evt);
             }
         });
 
@@ -1230,7 +1241,7 @@ public class Sistemas extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCUITConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCUILConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel27)
                         .addGap(200, 200, 200)
@@ -1269,7 +1280,7 @@ public class Sistemas extends javax.swing.JFrame {
                             .addComponent(jLabel28))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCUITConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(txtCUILConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                             .addComponent(txtNombreConfiguracion))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1360,10 +1371,8 @@ public class Sistemas extends javax.swing.JFrame {
     private void btnActualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarClienteActionPerformed
         // TODO add your handling code here:
         if ("".equals(txtIDCliente.getText())) {
-            JOptionPane.showMessageDialog(null, "Seleccione un cliente para actualizar");
-            
-        } else {
-            
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente para actualizar");            
+        } else {            
             if(!"".equals(txtDNICliente.getText())||
                     !"".equals(txtNombreCliente.getText())||
                     !"".equals(txtTelCliente.getText())||
@@ -1413,9 +1422,9 @@ public class Sistemas extends javax.swing.JFrame {
         listarProveedor();        
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void txtCUITConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCUITConfiguracionActionPerformed
+    private void txtCUILConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCUILConfiguracionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCUITConfiguracionActionPerformed
+    }//GEN-LAST:event_txtCUILConfiguracionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tabModulo.setSelectedIndex(0);
@@ -1503,7 +1512,7 @@ public class Sistemas extends javax.swing.JFrame {
                 pd.setDescripcion(txtDescripcionProducto.getText());
                 pd.setProveedor(txtProveedorProducto.getText());
                 pd.setStock(Integer.parseInt(txtStockProducto.getText()));
-                pd.setPrecio(Integer.parseInt(txtPrecioProducto.getText()));
+                pd.setPrecio(Double.parseDouble(txtPrecioProducto.getText()));
                 pd.setId(Integer.parseInt(txtIDProducto.getText()));
                 pdDAO.modificarProductos(pd);
                 limpiarTable();
@@ -1558,9 +1567,12 @@ public class Sistemas extends javax.swing.JFrame {
             pd.setCodigo(txtCodigoProducto.getText());
             pd.setDescripcion(txtDescripcionProducto.getText());
             pd.setStock(Integer.parseInt(txtStockProducto.getText()));
-            pd.setPrecio(Integer.parseInt(txtPrecioProducto.getText()));
+            pd.setPrecio(Double.parseDouble(txtPrecioProducto.getText()));
             pd.setProveedor(txtProveedorProducto.getText());
             pdDAO.RegistrarProductos(pd);
+            limpiarTable();
+            limpiarProducto();
+            listarProducto();
         }else{
             JOptionPane.showMessageDialog(null, "Los campos están vacíos!!!");
         } 
@@ -1575,34 +1587,20 @@ public class Sistemas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDireccionConfiguracionActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-            
-            if(!"".equals(txtCUITConfiguracion.getText())||
-                    !"".equals(txtNombreConfiguracion.getText())||
-                    !"".equals(txtTelConfiguracion.getText())||
-                    !"".equals(txtDireccionConfiguracion.getText())||
-                    !"".equals(txtRazonConfiguracion.getText())){
-                cfg.setCUIL(txtCUITConfiguracion.getText());
-                cfg.setNombre(txtNombreConfiguracion.getText());
-                cfg.setTelefono(Integer.parseInt(txtTelConfiguracion.getText()));
-                cfg.setDireccion(txtDireccionConfiguracion.getText());
-                cfg.setRazon(txtRazonConfiguracion.getText());
-                cfg.setId(Integer.parseInt(txtIDProveedor.getText()));
-                cfgDAO.modificarConfig(cfg);
-            } else if ("".equals(txtCUITConfiguracion.getText())&&
-                    "".equals(txtNombreConfiguracion.getText())&&
-                    "".equals(txtTelConfiguracion.getText())&&
-                    "".equals(txtDireccionConfiguracion.getText())&&
-                    "".equals(txtRazonConfiguracion.getText())) {
-                cfg.setCUIL(txtCUITConfiguracion.getText());
-                cfg.setNombre(txtNombreConfiguracion.getText());
-                cfg.setTelefono(Integer.parseInt(txtTelConfiguracion.getText()));
-                cfg.setDireccion(txtDireccionConfiguracion.getText());
-                cfg.setRazon(txtRazonConfiguracion.getText());
-                cfg.setId(Integer.parseInt(txtIDProveedor.getText()));
-                cfgDAO.RegistrarConfig(cfg);
-            } else {
-            JOptionPane.showMessageDialog(null, "Hay campos que están vacíos. Debe llenarlos todos.");  
-            }
+        if (!"".equals(txtCUILConfiguracion.getText()) || !"".equals(txtNombreConfiguracion.getText()) ||
+                !"".equals(txtTelConfiguracion.getText()) || !"".equals(txtDireccionConfiguracion.getText())
+                || !"".equals(txtRazonConfiguracion.getText())) {
+            cfg.setCUIL(txtCUILConfiguracion.getText());
+            cfg.setNombre(txtNombreConfiguracion.getText());
+            cfg.setTelefono(Integer.parseInt(txtTelConfiguracion.getText()));
+            cfg.setDireccion(txtDireccionConfiguracion.getText());
+            cfg.setRazon(txtRazonConfiguracion.getText());
+            cfgDAO.modificarConfig(cfg);
+            JOptionPane.showMessageDialog(null, "Datos de la empresa modificado");
+            ListarConfig();
+        } else {
+            JOptionPane.showMessageDialog(null, "Los campos estan vacios");
+        }
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void btnExcelProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelProductoActionPerformed
@@ -1715,7 +1713,7 @@ public class Sistemas extends javax.swing.JFrame {
     private javax.swing.JTable tableProveedor;
     private javax.swing.JTable tableVenta;
     private javax.swing.JTable tableVentas;
-    private javax.swing.JTextField txtCUITConfiguracion;
+    private javax.swing.JTextField txtCUILConfiguracion;
     private javax.swing.JTextField txtCUITProveedor;
     private javax.swing.JTextField txtCantidadVenta;
     private javax.swing.JTextField txtCodigoProducto;
